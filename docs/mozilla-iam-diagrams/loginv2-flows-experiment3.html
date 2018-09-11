@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.5.3/dist/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Flows</h1>
+    <embed id="flows" type="image/svg+xml" style="width: 1600px; height: 800px; border:1px solid black; " src="loginv2-flows-experiment3.svg" />
+
+    <script>
+      // Don't use window.onLoad like this in production, because it can only listen to one function.
+      window.onload = function() {
+        svgPanZoom('#flows', {
+          zoomEnabled: true,
+          controlIconsEnabled: true
+        });
+      };
+    </script>
+
+<pre>
+
+graph TB
+classDef greyed fill:#c0c0c0;
+classDef error fill:#ff0000;
+Contributor --> AAL1[AAL1 Website]
+AAL1 --> PW[Passwordless]
+AAL1 --> GH[GitHub]
+AAL1 --> Go[Google]
+AAL1 --> FxA[FxA]
+PW --> RP-PW[RP]
+GH -->|GitHub 2FA|RP-GH2FA[RP]
+GH -->|GitHub|RP-GH[RP]
+Go --> RP-Go[RP]
+FxA -->|FxA 2FA|RP-FxA2FA[RP]
+FxA -->|FxA|RP-FxA[RP]
+RP-PW --> AAL2-1[AAL2 Website]
+RP-GH2FA --> AAL2-2[AAL2 Website]
+RP-GH --> AAL2-3[AAL2 Website]
+RP-Go --> AAL2-4[AAL2 Website]
+RP-FxA2FA --> AAL2-5[AAL2 Website]
+RP-FxA --> AAL2-6[AAL2 Website]
+AAL2-1 --> GH1[GitHub]
+AAL2-1 --> Go1[Google]
+AAL2-1 --> FxA1[FxA]
+AAL2-2 --> GH2[GitHub]
+AAL2-2 --> Go2[Google]
+AAL2-2 --> FxA2[FxA]
+AAL2-3 -.-> GH3[GitHub]
+class GH3 greyed;
+AAL2-3 --> Go3[Google]
+AAL2-3 --> FxA3[FxA]
+AAL2-4 --> GH4[GitHub]
+AAL2-4 --> Go4[Google]
+AAL2-4 --> FxA4[FxA]
+AAL2-5 --> GH5[GitHub]
+AAL2-5 --> Go5[Google]
+AAL2-5 --> FxA5[FxA]
+AAL2-6 --> GH6[GitHub]
+AAL2-6 --> Go6[Google]
+AAL2-6 -.-> FxA6[FxA]
+class FxA6 greyed;
+GH1 --> GH1C{Warn}
+FxA1 --> FxA1C{Warn}
+GH2 --> GH2C{ }
+FxA2 --> FxA2C{Warn}
+GH3 --> GH3C{Warn}
+FxA3 --> FxA3C{Warn}
+GH4 --> GH4C{Warn}
+FxA4 --> FxA4C{Warn}
+GH5 --> GH5C{Warn}
+FxA5 --> FxA5C{ }
+GH6 --> GH6C{Warn}
+FxA6 --> FxA6C{Warn}
+GH1C -->|GitHub 2FA| GH1-RP[RP]
+GH1C -->|GitHub| GH11FA{Error}
+Go1 --> Go1-RP[RP]
+FxA1C -->|FxA 2FA| FxA1C-RP[RP]
+FxA1C -->|FxA| FxA11FA{Error}
+GH2C -->|GitHub 2FA| GH2-RP[RP]
+GH2C -->|GitHub| GH21FA{Error}
+class GH21FA error;
+Go2 --> Go2-RP[RP]
+FxA2C -->|FxA 2FA| FxA2C-RP[RP]
+FxA2C -->|FxA| FxA21FA{Error}
+GH3C -->|GitHub 2FA| GH3-RP[RP]
+GH3C -->|GitHub| GH31FA{Error}
+Go3 --> Go3-RP[RP]
+FxA3C -->|FxA 2FA| FxA3C-RP[RP]
+FxA3C -->|FxA| FxA31FA{Error}
+GH4C -->|GitHub 2FA| GH4-RP[RP]
+GH4C -->|GitHub| GH41FA{Error}
+Go4 --> Go4-RP[RP]
+FxA4C -->|FxA 2FA| FxA4C-RP[RP]
+FxA4C -->|FxA| FxA41FA{Error}
+GH5C -->|GitHub 2FA| GH5-RP[RP]
+GH5C -->|GitHub| GH51FA{Error}
+Go5 --> Go5-RP[RP]
+FxA5C -->|FxA 2FA| FxA5C-RP[RP]
+FxA5C -->|FxA| FxA51FA{Error}
+class FxA51FA error;
+GH6C -->|GitHub 2FA| GH6-RP[RP]
+GH6C -->|GitHub| GH61FA{Error}
+Go6 --> Go6-RP[RP]
+FxA6C -->|FxA 2FA| FxA6C-RP[RP]
+FxA6C -->|FxA| FxA61FA{Error}
+GH1-RP --> AAL2S-1[AAL2 Website 2]
+Go1-RP --> AAL2S-2[AAL2 Website 2]
+FxA1C-RP --> AAL2S-3[AAL2 Website 2]
+GH2-RP --> AAL2S-4[AAL2 Website 2]
+Go2-RP --> AAL2S-5[AAL2 Website 2]
+FxA2C-RP --> AAL2S-6[AAL2 Website 2]
+GH3-RP --> AAL2S-7[AAL2 Website 2]
+Go3-RP --> AAL2S-8[AAL2 Website 2]
+FxA3C-RP --> AAL2S-9[AAL2 Website 2]
+GH4-RP --> AAL2S-10[AAL2 Website 2]
+Go4-RP --> AAL2S-11[AAL2 Website 2]
+FxA4C-RP --> AAL2S-12[AAL2 Website 2]
+GH5-RP --> AAL2S-13[AAL2 Website 2]
+Go5-RP --> AAL2S-14[AAL2 Website 2]
+FxA5C-RP --> AAL2S-15[AAL2 Website 2]
+GH6-RP --> AAL2S-16[AAL2 Website 2]
+Go6-RP --> AAL2S-17[AAL2 Website 2]
+FxA6C-RP --> AAL2S-18[AAL2 Website 2]
+
+AAL2S-1 --> GHS-1[GitHub]
+AAL2S-1 --> GoS-1[Google]
+AAL2S-1 --> FxAS-1[FxA]
+AAL2S-2 --> GHS-2[GitHub]
+AAL2S-2 --> GoS-2[Google]
+AAL2S-2 --> FxAS-2[FxA]
+AAL2S-3 --> GHS-3[GitHub]
+AAL2S-3 --> GoS-3[Google]
+AAL2S-3 --> FxAS-3[FxA]
+AAL2S-4 --> GHS-4[GitHub]
+AAL2S-4 --> GoS-4[Google]
+AAL2S-4 --> FxAS-4[FxA]
+AAL2S-5 --> GHS-5[GitHub]
+AAL2S-5 --> GoS-5[Google]
+AAL2S-5 --> FxAS-5[FxA]
+AAL2S-6 --> GHS-6[GitHub]
+AAL2S-6 --> GoS-6[Google]
+AAL2S-6 --> FxAS-6[FxA]
+AAL2S-7 --> GHS-7[GitHub]
+AAL2S-7 --> GoS-7[Google]
+AAL2S-7 --> FxAS-7[FxA]
+AAL2S-8 -.-> GHS-8[GitHub]
+class GHS-8 greyed;
+AAL2S-8 --> GoS-8[Google]
+AAL2S-8 --> FxAS-8[FxA]
+AAL2S-9 -.-> GHS-9[GitHub]
+class GHS-9 greyed;
+AAL2S-9 --> GoS-9[Google]
+AAL2S-9 --> FxAS-9[FxA]
+AAL2S-10 --> GHS-10[GitHub]
+AAL2S-10 --> GoS-10[Google]
+AAL2S-10 --> FxAS-10[FxA]
+AAL2S-11 --> GHS-11[GitHub]
+AAL2S-11 --> GoS-11[Google]
+AAL2S-11 --> FxAS-11[FxA]
+AAL2S-12 --> GHS-12[GitHub]
+AAL2S-12 --> GoS-12[Google]
+AAL2S-12 --> FxAS-12[FxA]
+AAL2S-13 --> GHS-13[GitHub]
+AAL2S-13 --> GoS-13[Google]
+AAL2S-13 --> FxAS-13[FxA]
+AAL2S-14 --> GHS-14[GitHub]
+AAL2S-14 --> GoS-14[Google]
+AAL2S-14 --> FxAS-14[FxA]
+AAL2S-15 --> GHS-15[GitHub]
+AAL2S-15 --> GoS-15[Google]
+AAL2S-15 --> FxAS-15[FxA]
+AAL2S-16 --> GHS-16[GitHub]
+AAL2S-16 --> GoS-16[Google]
+AAL2S-16 -.-> FxAS-16[FxA]
+class FxAS-16 greyed;
+AAL2S-17 --> GHS-17[GitHub]
+AAL2S-17 --> GoS-17[Google]
+AAL2S-17 -.-> FxAS-17[FxA]
+class FxAS-17 greyed;
+
+AAL2S-18 --> GHS-18[GitHub]
+AAL2S-18 --> GoS-18[Google]
+AAL2S-18 -.-> FxAS-18[FxA]
+
+
+
+GHS-1 --> GHS-1C{ }
+GoS-1 --> GoS-1-RP[RP]
+FxAS-1 --> FxAS-1C{Warn}
+GHS-2 --> GHS-2C{Warn}
+GoS-2 --> GoS-2-RP[RP]
+FxAS-2 --> FxAS-2C{Warn}
+GHS-3 --> GHS-3C{Warn}
+GoS-3 --> GoS-3-RP[RP]
+FxAS-3 --> FxAS-3C{ }
+GHS-4 --> GHS-4C{ }
+GoS-4 --> GoS-4-RP[RP]
+FxAS-4 --> FxAS-4C{Warn}
+GHS-5 --> GHS-5C{Warn}
+GoS-5 --> GoS-5-RP[RP]
+FxAS-5 --> FxAS-5C{Warn}
+GHS-6 --> GHS-6C{Warn}
+GoS-6 --> GoS-6-RP[RP]
+FxAS-6 --> FxAS-6C{ }
+GHS-7 --> GHS-7C{Warn}
+GoS-7 --> GoS-7-RP[RP]
+FxAS-7 --> FxAS-7C{Warn}
+GHS-8 --> GHS-8C{Warn}
+GoS-8 --> GoS-8-RP[RP]
+FxAS-8 --> FxAS-8C{Warn}
+GHS-9 --> GHS-9C{Warn}
+GoS-9 --> GoS-9-RP[RP]
+FxAS-9 --> FxAS-9C{ }
+GHS-10 --> GHS-10C{ }
+GoS-10 --> GoS-10-RP[RP]
+FxAS-10 --> FxAS-10C{Warn}
+GHS-11 --> GHS-11C{Warn}
+GoS-11 --> GoS-11-RP[RP]
+FxAS-11 --> FxAS-11C{Warn}
+GHS-12 --> GHS-12C{Warn}
+GoS-12 --> GoS-12-RP[RP]
+FxAS-12 --> FxAS-12C{ }
+GHS-13 --> GHS-13C{ }
+GoS-13 --> GoS-13-RP[RP]
+FxAS-13 --> FxAS-13C{ }
+GHS-14 --> GHS-14C{Warn}
+GoS-14 --> GoS-14-RP[RP]
+FxAS-14 --> FxAS-14C{ }
+GHS-15 --> GHS-15C{Warn}
+GoS-15 --> GoS-15-RP[RP]
+FxAS-15 --> FxAS-15C{ }
+GHS-16 --> GHS-16C{ }
+GoS-16 --> GoS-16-RP[RP]
+FxAS-16 --> FxAS-16C{Warn}
+GHS-17 --> GHS-17C{Warn}
+GoS-17 --> GoS-17-RP[RP]
+FxAS-17 --> FxAS-17C{Warn}
+
+GHS-18 --> GHS-18C{Warn}
+GoS-18 --> GoS-18-RP[RP]
+FxAS-18 --> FxAS-18C{Warn}
+
+GHS-1C -->|GitHub 2FA| GHS-1-RP[RP]
+GHS-1C -->|GitHub| GHS-1-1FA{Error}
+class GHS-1-1FA error;
+FxAS-1C -->|FxA 2FA| FxAS-1-RP[RP]
+FxAS-1C -->|FxA| FxAS-1-1FA{Error}
+
+GHS-2C -->|GitHub 2FA| GHS-2-RP[RP]
+GHS-2C -->|GitHub| GHS-2-1FA{Error}
+FxAS-2C -->|FxA 2FA| FxAS-2-RP[RP]
+FxAS-2C -->|FxA| FxAS-2-1FA{Error}
+
+GHS-3C -->|GitHub 2FA| GHS-3-RP[RP]
+GHS-3C -->|GitHub| GHS-3-1FA{Error}
+FxAS-3C -->|FxA 2FA| FxAS-3-RP[RP]
+FxAS-3C -->|FxA| FxAS-3-1FA{Error}
+class FxAS-3-1FA error;
+
+GHS-4C -->|GitHub 2FA| GHS-4-RP[RP]
+GHS-4C -->|GitHub| GHS-4-1FA{Error}
+class GHS-4-1FA error;
+FxAS-4C -->|FxA 2FA| FxAS-4-RP[RP]
+FxAS-4C -->|FxA| FxAS-4-1FA{Error}
+
+GHS-5C -->|GitHub 2FA| GHS-5-RP[RP]
+GHS-5C -->|GitHub| GHS-5-1FA{Error}
+FxAS-5C -->|FxA 2FA| FxAS-5-RP[RP]
+FxAS-5C -->|FxA| FxAS-5-1FA{Error}
+
+GHS-6C -->|GitHub 2FA| GHS-6-RP[RP]
+GHS-6C -->|GitHub| GHS-6-1FA{Error}
+FxAS-6C -->|FxA 2FA| FxAS-6-RP[RP]
+FxAS-6C -->|FxA| FxAS-6-1FA{Error}
+class FxAS-6-1FA error;
+
+GHS-7C -->|GitHub 2FA| GHS-7-RP[RP]
+GHS-7C -->|GitHub| GHS-7-1FA{Error}
+FxAS-7C -->|FxA 2FA| FxAS-7-RP[RP]
+FxAS-7C -->|FxA| FxAS-7-1FA{Error}
+
+GHS-8C -->|GitHub 2FA| GHS-8-RP[RP]
+GHS-8C -->|GitHub| GHS-8-1FA{Error}
+FxAS-8C -->|FxA 2FA| FxAS-8-RP[RP]
+FxAS-8C -->|FxA| FxAS-8-1FA{Error}
+
+GHS-9C -->|GitHub 2FA| GHS-9-RP[RP]
+GHS-9C -->|GitHub| GHS-9-1FA{Error}
+FxAS-9C -->|FxA 2FA| FxAS-9-RP[RP]
+FxAS-9C -->|FxA| FxAS-9-1FA{Error}
+class FxAS-9-1FA error;
+
+GHS-10C -->|GitHub 2FA| GHS-10-RP[RP]
+GHS-10C -->|GitHub| GHS-10-1FA{Error}
+class GHS-10-1FA error;
+FxAS-10C -->|FxA 2FA| FxAS-10-RP[RP]
+FxAS-10C -->|FxA| FxAS-10-1FA{Error}
+
+GHS-11C -->|GitHub 2FA| GHS-11-RP[RP]
+GHS-11C -->|GitHub| GHS-11-1FA{Error}
+FxAS-11C -->|FxA 2FA| FxAS-11-RP[RP]
+FxAS-11C -->|FxA| FxAS-11-1FA{Error}
+
+GHS-12C -->|GitHub 2FA| GHS-12-RP[RP]
+GHS-12C -->|GitHub| GHS-12-1FA{Error}
+FxAS-12C -->|FxA 2FA| FxAS-12-RP[RP]
+FxAS-12C -->|FxA| FxAS-12-1FA{Error}
+class FxAS-12-1FA error;
+
+GHS-13C -->|GitHub 2FA| GHS-13-RP[RP]
+GHS-13C -->|GitHub| GHS-13-1FA{Error}
+class GHS-13-1FA error;
+FxAS-13C -->|FxA 2FA| FxAS-13-RP[RP]
+FxAS-13C -->|FxA| FxAS-13-1FA{Error}
+class FxAS-13-1FA error;
+
+GHS-14C -->|GitHub 2FA| GHS-14-RP[RP]
+GHS-14C -->|GitHub| GHS-14-1FA{Error}
+FxAS-14C -->|FxA 2FA| FxAS-14-RP[RP]
+FxAS-14C -->|FxA| FxAS-14-1FA{Error}
+class FxAS-14-1FA error;
+
+GHS-15C -->|GitHub 2FA| GHS-15-RP[RP]
+GHS-15C -->|GitHub| GHS-15-1FA{Error}
+FxAS-15C -->|FxA 2FA| FxAS-15-RP[RP]
+FxAS-15C -->|FxA| FxAS-15-1FA{Error}
+class FxAS-15-1FA error;
+
+GHS-16C -->|GitHub 2FA| GHS-16-RP[RP]
+GHS-16C -->|GitHub| GHS-16-1FA{Error}
+class GHS-16-1FA error;
+FxAS-16C -->|FxA 2FA| FxAS-16-RP[RP]
+FxAS-16C -->|FxA| FxAS-16-1FA{Error}
+
+GHS-17C -->|GitHub 2FA| GHS-17-RP[RP]
+GHS-17C -->|GitHub| GHS-17-1FA{Error}
+FxAS-17C -->|FxA 2FA| FxAS-17-RP[RP]
+FxAS-17C -->|FxA| FxAS-17-1FA{Error}
+
+GHS-18C -->|GitHub 2FA| GHS-18-RP[RP]
+GHS-18C -->|GitHub| GHS-18-1FA{Error}
+FxAS-18C -->|FxA 2FA| FxAS-18-RP[RP]
+FxAS-18C -->|FxA| FxAS-18-1FA{Error}
+
+
+</pre>
+
+  </body>
+
+</html>
